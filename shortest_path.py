@@ -127,7 +127,7 @@ def build_distance_table(graph, source):
 	return distance_table
 
 
-
+# un-weighted shortest path
 
 def shortest_path(graph, source, destination):
 	distance_table= build_distance_table(graph, source)
