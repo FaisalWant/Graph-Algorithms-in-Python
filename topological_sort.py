@@ -85,39 +85,39 @@ class AdjacencyMatrixGraph(Graph):
 			for v in self.get_adjacent_vertices(i):
 				print(i,"-->", v)
 
-# ------------BFS Search Algo----------------------
 
+# Topological Sort
 
-def breadth_first(graph, start=0):
-	queue= Queue()
-	queue.put(start)
+def topological_sort(graph):
+	queue=Queue()
+	indegreeMap={}
 
-	visited= np.zeros(graph.numVertices)
+	for i in range(graph.numVertices):
+		indegreeMap[i]=graph.get_indegree(i)
+
+		if indegreeMap[i]==0:
+			queue.put(i)
+
+	sortedList=[]
 	while not queue.empty():
-		vertex= queue.get()
-		if visited[vertex]==1:
-			continue
-
-		print("Visit:", vertex)
-		visited[vertex]=1
+		vertex=queue.get()
+		sortedList.append(vertex)
 
 		for v in graph.get_adjacent_vertices(vertex):
-			if visited[v] !=1:
+			indegreeMap[v]=indegreeMap[v]-1
+
+			if indegreeMap[v]==0:
 				queue.put(v)
 
 
-# ------------DFS Search Algo----------------------
+	if len(sortedList) != graph.numVertices:
+		raise ValueError("This graph has a  cycle")
 
-def depth_first(graph, visited, current=0):
-	if visited[current] == 1:
-		return 
-	visited[current]=1
-	print("Visited:", current)
-	for vertex in graph.get_adjacent_vertices(current):
-		depth_first(graph, visited, vertex)
+	print(sortedList)
 
 
-g=AdjacencyMatrixGraph(9)
+
+g=AdjacencyMatrixGraph(9, directed=True)
 g.add_edge(0,1)
 g.add_edge(1,2)
 g.add_edge(2,7)
@@ -125,13 +125,9 @@ g.add_edge(2,4)
 g.add_edge(2,3)
 g.add_edge(1,5)
 g.add_edge(5,6)
-g.add_edge(6,3)
+g.add_edge(3,6)
 g.add_edge(3,4)
 g.add_edge(6,8)
 
 
-# breadth_first(g,2)
-
-visited= np.zeros(g.numVertices)
-
-depth_first(g,visited)
+topological_sort(g)
