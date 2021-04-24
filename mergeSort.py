@@ -22,8 +22,48 @@ def copymergesort(A):
 	return B
 
 
+#MergeSort final Version
+#Requires single extra array
+#result arrary must be a duplicate of A
+
+def mergeSort(A):
+	copy=list(A)
+	mergesort_array(copy, A, 0,len(A))
+
+
+def mergesort_array(A, result, start, end):
+	if end-start <2:
+		return 
+	if end-start==2:
+		if result[start]>result[start+1]:
+			result[start], result[start+1]=result[start+1], result[start]
+
+		return 
+	mid=(end+start)/2
+	mergesort_array(result, A, start, mid)
+	mergesort_array(result, A, mid, end)
+
+	#merge
+	i=start
+	j=mid
+	idx= start
+	while idx<end:
+		if j>= end or (i<mid and A[i]<A[j]):
+			result [idx]=A[i]
+			i+=1
+		else:
+			result[idx]=A[j]
+			j+=1
+		idx +=1
+
+
+
+
+
+
+
 
 if __name__ =='__main__':
 	x=[3,41,1,54,12]
-	result=copymergesort(x)
-	print(result)
+	result=mergeSort(x)
+	print(x)
