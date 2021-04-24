@@ -2,6 +2,7 @@
 #overcomming the skew problem
 #usng median heruistic
 
+#advance Python is the current directory
 
 from advancePython.binarySearchTree import BinaryTree
 
