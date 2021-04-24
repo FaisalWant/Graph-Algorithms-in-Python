@@ -106,15 +106,15 @@ def perfomance():
 		n*=2
 
 
-if __name__ =='__main__':
-	bt=BinaryTree()
-	bt.add(5)
-	bt.add(10)
-	bt.add(7)
-	bt.add(2)
-	bt.add(1)
-	bt.add(8)
-	print(bt.contains(5))
-	print(bt.contains(50))
-	bt.remove(5)
-	print(bt.contains(5))
+# if __name__ =='__main__':
+# 	bt=BinaryTree()
+# 	bt.add(5)
+# 	bt.add(10)
+# 	bt.add(7)
+# 	bt.add(2)
+# 	bt.add(1)
+# 	bt.add(8)
+# 	print(bt.contains(5))
+# 	print(bt.contains(50))
+# 	bt.remove(5)
+# 	print(bt.contains(5))
