@@ -48,7 +48,7 @@ def exponent_mat(x,n):
 		return x
 
 	if n%2:
-		return x.dot(exponent(x.dot(x), (n-1)/2))
+		return x.dot(exponent_mat(x.dot(x), (n-1)/2))
 
 	return exponent_mat(x.dot(x), n/2)
 
