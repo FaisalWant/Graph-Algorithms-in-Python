@@ -1,3 +1,5 @@
+# Different from regular Trie DS
+
 class SuffixTrie: 
     def __init__(self, string): 
         self.root={} 
